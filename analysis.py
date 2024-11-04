@@ -79,3 +79,35 @@ def generate_statistics(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
     correlation_matrix = df.corr()
     
     return descriptive_stats, correlation_matrix
+
+
+def main():
+    # Set the style for better-looking plots
+    plt.style.use('seaborn')
+    
+    # Load and clean data
+    df = load_and_clean_data()
+    
+    # Generate all visualizations
+    dist_plot = create_distribution_plot(df)
+    scatter_plot = create_scatter_plot(df)
+    heatmap = create_heatmap(df)
+    
+    # Generate statistics
+    desc_stats, corr_matrix = generate_statistics(df)
+    
+    # Save plots
+    dist_plot.savefig('distribution_plot.png', bbox_inches='tight', dpi=300)
+    scatter_plot.savefig('scatter_plot.png', bbox_inches='tight', dpi=300)
+    heatmap.savefig('heatmap.png', bbox_inches='tight', dpi=300)
+    
+    # Print statistics
+    print("\nDescriptive Statistics:")
+    print(desc_stats)
+    print("\nCorrelation Matrix:")
+    print(corr_matrix)
+    
+    plt.close('all')  # Clean up memory
+
+if __name__ == "__main__":
+    main()
