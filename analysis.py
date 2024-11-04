@@ -33,3 +33,19 @@ def create_distribution_plot(df: pd.DataFrame) -> plt.Figure:
     plt.xlabel('Price (100k USD)')
     plt.ylabel('Count of Houses')
     return plt.gcf()
+
+def create_scatter_plot(df: pd.DataFrame) -> plt.Figure:
+    """
+    Create a scatter plot showing relationship between median income
+    and house prices.
+    Returns matplotlib figure object.
+    """
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(data=df, 
+                    x='MedInc', 
+                    y='PRICE',
+                    alpha=0.5)
+    plt.title('Median Income vs House Prices')
+    plt.xlabel('Median Income (10k USD)')
+    plt.ylabel('House Price (100k USD)')
+    return plt.gcf()
