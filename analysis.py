@@ -69,3 +69,13 @@ def create_heatmap(df: pd.DataFrame) -> plt.Figure:
                 fmt='.2f')
     plt.title('Correlation Heatmap of Housing Features')
     return plt.gcf()
+
+def generate_statistics(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Generate descriptive statistics and correlation matrix.
+    Returns tuple of (descriptive stats, correlation matrix).
+    """
+    descriptive_stats = df.describe()
+    correlation_matrix = df.corr()
+    
+    return descriptive_stats, correlation_matrix
