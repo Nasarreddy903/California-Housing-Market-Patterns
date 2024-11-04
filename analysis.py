@@ -49,3 +49,23 @@ def create_scatter_plot(df: pd.DataFrame) -> plt.Figure:
     plt.xlabel('Median Income (10k USD)')
     plt.ylabel('House Price (100k USD)')
     return plt.gcf()
+
+
+def create_heatmap(df: pd.DataFrame) -> plt.Figure:
+    """
+    Create a correlation heatmap of housing metrics.
+    Returns matplotlib figure object.
+    """
+    # Calculate correlation matrix
+    corr_matrix = df.corr()
+    
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(corr_matrix, 
+                annot=True, 
+                cmap='coolwarm', 
+                vmin=-1, 
+                vmax=1,
+                center=0,
+                fmt='.2f')
+    plt.title('Correlation Heatmap of Housing Features')
+    return plt.gcf()
